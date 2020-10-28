@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	delete
+{% endblock %}
+
+
+{% block content %}
+
+<h1>Are you sure you want to delete this item?</h1>
+<form method="POST">
+	{% csrf_token %}
+<input type="submit" value="Delete" class="btn btn-danger btn-lg mt-3" >
+<a href="{% url 'home' %}" class="btn btn-warning btn-lg ml-3 mt-3">Cancel</a>
+</form>
+
+{% endblock %}

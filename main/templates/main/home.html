@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-sm-3">
+     	<form method="POST">
+     		{% csrf_token %}
+     		{{add|crispy}}
+     		<input type="submit" value="Add" class="btn btn-success btn-lg">
+     	</form>
+    </div>
+    <div class="col-sm-8 offset-sm-1">
+     <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Task</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for get in show %}
+    <tr>
+      <th scope="row">{{get.id}}</th>
+      <td>{{get.task}}</td>
+      <td><a href="{% url 'update' get.id %}" class="btn btn-primary">Update</a></td>
+      <td><a href="{% url 'delete' get.id %}" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
