@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 class DisplayForm(forms.ModelForm):
 	class Meta:
 		model = MainModel
-		fields = ('task',)
+		fields = ('task', 'user',)
 
 # class CustomUserRegistrationForm(forms.ModelForm):
 # 	password1 = forms.CharField(label="Password", widget=forms.PasswordInput)

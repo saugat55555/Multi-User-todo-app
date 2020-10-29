@@ -72,8 +72,16 @@ def register(request):
 
 @login_required(login_url='login')
 def profile(request):
+	if request.method == "POST":
+		add = DisplayForm(request.POST)
+		if add.is_valid():
+			add.save()
+			add = DisplayForm()
+	else:
+		add = DisplayForm()
+
 	show = MainModel.objects.filter(user=request.user)
-	context = {'show':show}
+	context = {'show':show, 'add':add}
 	return render(request, 'main/profile.html', context)
 
 

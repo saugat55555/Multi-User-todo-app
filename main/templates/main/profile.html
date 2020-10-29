@@ -1,13 +1,25 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %} Profile {% endblock %}
 
 
 {% block content %} 
 
-<h1>Hello {{request.user.username}}. this is your profile</h1>
+<h1 class="mb-5 text-center">Hello {{request.user.username}}. This is your profile</h1>
 
-<div class="col">
+<div class ="row">
+<div class ="col-sm-4">
+
+<form method="POST">
+	{% csrf_token %}
+	{{add|crispy}}
+	<input type="submit" value="Add" class="btn btn-success btn-lg">
+</form>
+
+
+</div>
+<div class="col-sm-8">
      <table class="table table-striped">
   <thead>
     <tr>
@@ -29,7 +41,7 @@
   </tbody>
 </table>
     </div>
-  
+  </div>
 
 
 {% endblock %}
