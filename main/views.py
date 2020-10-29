@@ -39,7 +39,7 @@ def update(request, id):
 		add = DisplayForm(data=request.POST, instance=form)
 		if add.is_valid():
 			add.save()
-			return redirect('/')
+			return redirect('profile')
 	else:
 		form = MainModel.objects.get(id=id)
 		add = DisplayForm(instance=form)
